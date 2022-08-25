@@ -20,6 +20,7 @@ jobs:
 
   deploy-production:
     runs-on: ubuntu-latest
-    name: Retag image
+    needs: retag-push
+    name: Deploy
     steps:
       - run: echo "Deploy to production with image tag ${{ steps.get_version.outputs.VERSION }}"
