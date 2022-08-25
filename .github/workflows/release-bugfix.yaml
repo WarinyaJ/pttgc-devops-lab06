@@ -1,4 +1,4 @@
-name: Merge Feature Branch
+name: Bug Fix in Release branch
 
 on:
   push:
