@@ -14,7 +14,6 @@ jobs:
     steps:
       - run: echo ${{ github.sha }}
       - run: echo ${{ github.ref }}
-      - run: echo ${{ github.ref##*/}}
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
