@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Retag image
     steps:
-      - run: echo ${{ github.sha }}
-      - run: echo ${{ github.ref }}
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
