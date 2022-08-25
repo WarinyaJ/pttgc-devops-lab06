@@ -3,7 +3,7 @@ name: Merge Feature Branch
 on:
   push:
     branches:
-      - release/*
+      - release*
 
 jobs:
   unittest:
