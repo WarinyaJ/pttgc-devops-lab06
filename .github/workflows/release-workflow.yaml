@@ -1,0 +1,27 @@
+name: Release workflow
+
+on: 
+  release:
+    types:
+      - published
+    branches:
+      - main
+
+jobs:
+  retag-push:
+    runs-on: ubuntu-latest
+    name: Retag image
+    steps:
+      - run: echo ${{ github.sha }}
+      - run: echo ${{ github.ref }}
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+      - run: echo "Retag image from tag ${{ github.sha }} to ${{ steps.get_version.outputs.VERSION }}"
+      - run: echo "Push image with tag ${{ steps.get_version.outputs.VERSION }}"
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    name: Retag image
+    steps:
+      - run: echo "Deploy to production with image tag ${{ steps.get_version.outputs.VERSION }}"

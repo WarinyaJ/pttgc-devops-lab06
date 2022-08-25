@@ -1,10 +1,9 @@
-name: Feature Branch Workflow
+name: Merge Feature Branch
 
-on: 
+on:
   push:
     branches:
-      - feature-*
-  workflow_dispatch:
+      - release/*
 
 jobs:
   unittest:
@@ -89,5 +88,3 @@ jobs:
     needs: ["docker-build"]
     steps:
       - run: echo 'Deploy to dev env'
-
-  
